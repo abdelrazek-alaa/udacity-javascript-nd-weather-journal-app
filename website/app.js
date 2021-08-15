@@ -5,12 +5,16 @@ const generateButton = document.querySelector("#generate");
 const ResultDate = document.querySelector("#entryHolder #date");
 const ResultTemp = document.querySelector("#entryHolder #temp");
 const ResultContent = document.querySelector("#entryHolder #content");
-let baseUrl = "https://api.openweathermap.org/data/2.5/weather?zip=";
-let apiKey = "&units=metric&appid=YOUR API KEY HERE"; // put your api key here
+
+//Api url and Api Key
+const baseUrl = "https://api.openweathermap.org/data/2.5/weather?zip=";
+const apiKey = "&units=metric&appid=YOUR API KEY HERE"; // put your api key here
+
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
-//d.main.temp
+
+//Event listener for generate button to call the api , store data to app server and update the UI dynamically
 generateButton.addEventListener("click", () => {
   const fullUrl = baseUrl + zip.value + apiKey;
   getDataFromApi(fullUrl)
@@ -23,10 +27,13 @@ generateButton.addEventListener("click", () => {
     })
     .then(() => {
       getDataFromServer("/all");
-    });
+    })
+    .catch((e) => console.log(e));
 });
 
-//POST method implementation
+/*  Asynchronous functions */
+
+//make a POST request to add the API data, as well as data entered by the user, to app
 async function postData(url = "", data = {}) {
   const response = await fetch(url, {
     method: "POST",
@@ -37,12 +44,13 @@ async function postData(url = "", data = {}) {
   });
 }
 
-//Get method implementation
+//make a GET request to the OpenWeatherMap API
 async function getDataFromApi(url = "") {
   const response = await fetch(url);
   return response.json();
 }
 
+//retrieve data from the app, select the necessary elements on the DOM and then update their necessary values
 async function getDataFromServer(url = "") {
   const response = await fetch(url);
   const data = await response.json();
