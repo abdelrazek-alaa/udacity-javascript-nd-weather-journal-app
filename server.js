@@ -27,6 +27,18 @@ function listening() {
   console.log(`running on localhost: ${port}`);
 }
 
-app.get("/test", (req, res) => {
-  res.send("hello World!");
+app.get("/all", (req, res) => {
+  res.json(projectData);
+});
+
+app.post("/postData", (req, res) => {
+  projectData = {
+    temperature: req.body.temperature,
+    date: req.body.date,
+    userResponse: {
+      zip: req.body.userResponse.zip,
+      feelings: req.body.userResponse.feelings,
+    },
+  };
+  res.end();
 });
