@@ -1,6 +1,8 @@
 # Weather-Journal App Project
 
-This project is required to complete the Web Development Professional Nanodegree Certificate
+This project is required to complete the Web Development Professional Nanodegree Certificate.
+
+asynchronous web app that uses Web API and user data to dynamically update the UI in a Weather Journal application.
 
 ## Overview
 
