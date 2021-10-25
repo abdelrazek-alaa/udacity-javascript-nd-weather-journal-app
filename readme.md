@@ -1,8 +1,8 @@
 # Weather-Journal App Project
 
-This project is required to complete the Web Development Professional Nanodegree Certificate.
-
 asynchronous web app that uses Web API and user data to dynamically update the UI in a Weather Journal application.
+
+![](https://github.com/abdelrazek-alaa/udacity-javascript-nd-weather-journal-app/blob/6a2ba408ae8ca1155783cabb447b4b3d7a139c2f/Weather-Journal.png)
 
 ## Overview
 
